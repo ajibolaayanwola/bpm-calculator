@@ -1,0 +1,40 @@
+body {
+	-webkit-user-select: none;
+}
+
+body * {
+	text-shadow: none !important;
+}
+
+.ui-overlay-a {
+	background-color: black;
+}
+
+#home-page {
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+
+#home-page .ui-footer {
+	background: none;
+	border: none;
+}
+
+#home-page .ui-footer .ui-btn {
+	font-size: 20px;
+	width: 90%;
+}
+
+.ui-btn, .ui-btn:hover {
+	background-color: white !important;
+	border: 2px outset;
+}
+
+.ui-btn:active {
+	background-color: #e6e6e6 !important;
+}
+
+.ui-btn:focus {
+	box-shadow: none !important;
+}

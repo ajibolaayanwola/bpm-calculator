@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+        <meta http-equiv="Content-Security-Policy"/>
+        <link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" type="text/css" href="css/mystyle.css" />
+        <script src="jquery-1.11.2.min.js"></script>
+        <script>
+			$(document).on("mobileinit", function() {
+				//$.mobile.autoInitializePage = false;
+				$.mobile.defaultPageTransition = "none";
+			});
+		</script>
+        <script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/myfunctions.js"></script>
+        <title>BPM Calculator</title>
+    </head>
+    <body onload="onLoad()">
+    	<div data-role="page" id="home-page" onclick="calculateBPM()">
+			<div data-role="main" class="ui-content">
+				<h1>Tap to the beat of the song to calculate its BPM</h1>
+				<h1 class="bpm" style="font-size: 500%;"></h1>
+			</div>
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<button class="ui-btn" onclick="reset()">Reset</button>
+				<button class="ui-btn" onclick="openMineTracksSite()">Get your music heard</button>
+			</div>
+		</div>
+    </body>
+</html>
