@@ -73,9 +73,7 @@ function adSetter() {
 	if (typeof AdMob !== "undefined") {
 		AdMob.createBanner({
 			adId : admobid.banner,
-			adSize : 'CUSTOM',
-			width : screen.width,
-			height : 50,
+			adSize : "CUSTOM", width : 360, height : 50,
 			overlap : true,
 			position : AdMob.AD_POSITION.TOP_CENTER,
 			autoShow : true
