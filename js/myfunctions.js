@@ -76,6 +76,7 @@ function adSetter() {
 
 	if (typeof AdMob !== "undefined") {
 		alert(screenWidth);
+		alert("screen.width: " + screen.width + "\n$(window).width(): " + $(window).width());
 		AdMob.createBanner({
 			adId : admobid.banner,
 			adSize : "CUSTOM", width : screenWidth, height : 50,
