@@ -1,8 +1,11 @@
 var startTime;
 var numberOfTaps = 0;
 var bpms = [];
+var screenWidth;
 
 function onLoad() {
+	screenWidth = screen.width;
+	
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
 	$("#home-page").on("touchmove", function(e) {
@@ -11,6 +14,7 @@ function onLoad() {
 }
 
 function onDeviceReady() {
+	alert(screenWidth);
 	adSetter();
 }
 
@@ -71,10 +75,10 @@ function adSetter() {
 	}
 
 	if (typeof AdMob !== "undefined") {
-		alert("screen.width: " + screen.width "\n$(window).width(): " + $(window).width());
+		alert(screenWidth);
 		AdMob.createBanner({
 			adId : admobid.banner,
-			adSize : "CUSTOM", width : screen.width, height : 50,
+			adSize : "CUSTOM", width : screenWidth, height : 50,
 			overlap : true,
 			position : AdMob.AD_POSITION.TOP_CENTER,
 			autoShow : true
