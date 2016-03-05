@@ -4,7 +4,7 @@ var bpms = [];
 var screenWidth;
 
 function onLoad() {
-	screenWidth = screen.width;
+	screenWidth = $(window).width();
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
