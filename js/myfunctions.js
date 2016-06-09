@@ -8,6 +8,20 @@ function onLoad() {
 	$("#home-page").on("touchmove", function(e) {
 		e.preventDefault();
 	});
+	
+	$("#home-page").on("touchstart", function() {
+		calculateBPM();
+	});
+	
+	$("#home-page .reset-button").on("touchstart", function(event) {
+		event.stopPropagation();
+		reset();
+	});
+	
+	$("#home-page .minetracks-button").on("touchstart", function(event) {
+		event.stopPropagation();
+		openMineTracksSite();
+	});
 }
 
 function onDeviceReady() {
@@ -45,12 +59,10 @@ function reset() {
 	numberOfTaps = 0;
 	bpms = [];
 	$("#home-page .bpm").html("");
-	event.stopPropagation();
 }
 
 function openMineTracksSite() {
 	window.open('https://minetracks.com', '_system');
-	event.stopPropagation();
 }
 
 function adSetter() {
