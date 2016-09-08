@@ -2,6 +2,18 @@ var startTime;
 var numberOfTaps = 0;
 var bpms = [];
 
+if (localStorage.app_rated == null) {
+	localStorage.app_rated = "false";
+}
+
+if (localStorage.use_count == null) {
+	localStorage.use_count = "0";
+}
+
+if (localStorage.later_count == null) {
+	localStorage.later_count = "0";
+}
+
 function onLoad() {
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
@@ -9,19 +21,39 @@ function onLoad() {
 		e.preventDefault();
 	});
 	
-	$("#home-page").on("touchstart", function() {
+	$("#home-page > .ui-content").on("touchstart", function() {
 		calculateBPM();
 	});
 	
-	$("#home-page .reset-button").on("touchstart", function(event) {
-		event.stopPropagation();
+	$("#home-page .reset-button").on("tap", function(event) {
 		reset();
 	});
 	
-	$("#home-page .minetracks-button").on("touchstart", function(event) {
-		event.stopPropagation();
-		openMineTracksSite();
+	$("#rate-app-popup .rate-now-button").on("tap", function(event) {
+		localStorage.app_rated = "true";
+		window.open('market://details?id=com.triplea.bpmcalculator', '_system');
+		$("#rate-app-popup").off("popupafterclose");
+		$("#rate-app-popup").popup("close");
 	});
+	
+	$("#rate-app-popup .later-button").on("tap", function(event) {
+		$("#rate-app-popup").popup("close");
+	});
+	
+	$("#rate-app-popup").on("popupafterclose", function() {
+		localStorage.later_count = parseInt(localStorage.later_count) + 1;
+	});
+	
+	var mainContentBorderSize = $("#home-page > .ui-content").innerHeight() - $("#home-page > .ui-content").height();
+	$("#home-page > .ui-content").height($("#home-page").height() - mainContentBorderSize);
+	
+	if ((localStorage.app_rated == "false") && (localStorage.later_count < 2)) {
+		localStorage.use_count = parseInt(localStorage.use_count) + 1;
+		
+		if ((parseInt(localStorage.use_count) % 5) == 0) {
+			setTimeout(function(){ $("#rate-app-popup").popup("open"); }, 500);
+		}
+	}
 }
 
 function onDeviceReady() {
@@ -59,10 +91,6 @@ function reset() {
 	numberOfTaps = 0;
 	bpms = [];
 	$("#home-page .bpm").html("");
-}
-
-function openMineTracksSite() {
-	window.open('https://minetracks.com', '_system');
 }
 
 function adSetter() {

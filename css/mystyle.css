@@ -39,3 +39,17 @@ body * {
 .ui-btn:focus {
 	box-shadow: none !important;
 }
+
+#rate-app-popup .ui-block-a, #rate-app-popup .ui-block-b {
+	padding: 0px 4px;
+}
+
+.ui-popup .ui-header {
+	background-color: black;
+	color: white;
+}
+
+.ui-popup-screen {
+	height: 100%;
+	position: fixed;
+}
