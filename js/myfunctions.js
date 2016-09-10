@@ -31,7 +31,7 @@ function onLoad() {
 	
 	$("#rate-app-popup .rate-now-button").on("tap", function(event) {
 		localStorage.app_rated = "true";
-		window.open('market://details?id=com.triplea.bpmcalculator', '_system');
+		window.open('market://details?id=com.triplea.bpmcalculator');
 		$("#rate-app-popup").off("popupafterclose");
 		$("#rate-app-popup").popup("close");
 	});
